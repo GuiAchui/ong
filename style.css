@@ -1,0 +1,1569 @@
+/* ==========================================================================
+   LAR DA CRIANÇA FERMINO MAGNANI — EYRC ARCHITECTURAL EDITORIAL STYLE
+   ========================================================================== */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* === DECLARAÇÃO DE VARIÁVEIS TIPOGRÁFICAS === */
+:root {
+    --font-body: 'Outfit', sans-serif;
+    --font-heading: 'Shantell Sans', cursive, sans-serif;
+}
+
+/* === APLICAÇÃO GERAL (TEXTO BASE E LEITURA) === */
+*,
+body, 
+p, 
+span, 
+a, 
+li, 
+button, 
+input, 
+textarea, 
+select,
+blockquote,
+cite,
+td,
+th {
+    font-family: var(--font-body) !important;
+}
+
+/* === TÍTULOS, MARCADORES E ELEMENTOS DE DESTAQUE === */
+h1, h2, h3, h4, h5, h6,
+.logo-text h1,
+.footer-title,
+.badge-accent,
+.badge-pulse-container,
+.eyrc-tag,
+.eyrc-tag-light,
+.card-title,
+.stat-num,
+.stat-title,
+.section-header-eyrc h3,
+.section-header-light h3,
+.highlight-text {
+    font-family: var(--font-heading) !important;
+}
+
+:root {
+    /* PALETA DE CORES FORNECIDA */
+    --color-amber: #f5b32a;    /* Dourado / Amarelo vibrante */
+    --color-forest: #2d7c59;   /* Verde Escuro / Floresta */
+    --color-leaf: #5ec24a;     /* Verde Claro / Folha */
+
+    /* MAPEAMENTO DA IDENTIDADE DO SITE */
+    --brand-primary: var(--color-forest);
+    --brand-accent: var(--color-amber);
+    --brand-secondary: var(--color-leaf);
+
+    /* ESTRUTURA E NEUTROS */
+    --bg-light: #f8f9fa;
+    --text-dark: #111111;
+    --text-muted: #555555;
+    --line-color: #e2e2e2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* 2. ESTRUTURA DE HEADER & NAVIGATION (FIXO, MINIMALISTA) */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line-color);
+    z-index: 9999;
+    transition: transform 0.4s var(--ease-eyrc);
+}
+
+.header-container {
+    max-width: 1600px;
+    height: 90px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    text-decoration: none;
+    color: var(--text-black);
+}
+
+.logo-img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text h1 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.logo-text span {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-black);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--text-black);
+    transition: width 0.3s var(--ease-eyrc);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* 3. BOTÕES ESTILO EYRC (BORDAS RETAS, ALTO CONTRASTE) */
+.btn-doe, .btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--text-black);
+    color: var(--bg-main) !important;
+    border: 1px solid var(--text-black);
+    padding: 0.85rem 2rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-radius: 0px !important;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-eyrc) !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
+
+.btn-doe:hover, .btn-action:hover {
+    background-color: transparent !important;
+    color: var(--text-black) !important;
+    transform: none !important;
+}
+
+/* 4. HERO SECTION (BANNER EDITORIAL) */
+.hero {
+    margin-top: 90px;
+    padding: 8rem 4rem 6rem;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.hero-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.hero h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 1100px;
+    margin-bottom: 3rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* 5. GRID DE PROJETOS E CONTEÚDO (IMAGENS COM ASPECT RATIO E ZOOM) */
+.section-grid {
+    padding: 7rem 4rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.section-header-editorial {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line-color);
+}
+
+.section-title-editorial {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.section-cat {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-light);
+}
+
+.grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem 2.5rem;
+}
+
+.grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+}
+
+/* CARDS ARQUITETÔNICOS */
+.card-eyrc {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.card-image-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--bg-alt);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease-eyrc);
+}
+
+.card-eyrc:hover .card-image-box img {
+    transform: scale(1.05);
+}
+
+.card-meta {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+    transition: color 0.3s ease;
+}
+
+.card-eyrc:hover .card-title {
+    color: var(--brand-accent);
+}
+
+.card-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* 6. NÚMEROS E ESTATÍSTICAS DE IMPACTO (LARGE TYPOGRAPHY) */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 5rem 0;
+}
+
+.stat-item {
+    border-left: 1px solid var(--line-color);
+    padding-left: 2rem;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+/* 7. CITACÕES & DEPOIMENTOS (EDITORIAL QUOTE) */
+.quote-editorial {
+    padding: 8rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quote-editorial blockquote {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+.quote-editorial cite {
+    font-style: normal;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+}
+
+/* 8. FOOTER ARCHITECTURAL */
+footer {
+    background-color: var(--bg-main);
+    border-top: 1px solid var(--line-color);
+    padding: 8rem 4rem 4rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+.footer-brand h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 400px;
+}
+
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--brand-accent);
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--line-color);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* 9. RESPONSIVIDADE */
+@media (max-width: 1024px) {
+    .header-container, .hero, .section-grid, .quote-editorial, footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .grid-3col, .stats-container, .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-3col, .grid-2col, .stats-container, .footer-top {
+        grid-template-columns: 1fr;
+    }
+    nav {
+        display: none; /* Requer menu hamburguer minimalista em telas móveis */
+    }
+}
+/* ===================================================
+   EFEITOS DE BLOCOS, MOVIEMNTO E CONTRASTE (EYRC + ONG)
+   =================================================== */
+
+.container-eyrc {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+/* 1. HERO ASSIMÉTRICO COM CARD DE DESTAQUE */
+.hero-eyrc {
+    max-width: 1400px;
+    margin: 90px auto 0;
+    padding: 5rem 2rem;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.btn-primary-eyrc {
+    background: var(--text-black);
+    color: #fff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-primary-eyrc:hover {
+    background: var(--brand-accent);
+    transform: translateY(-3px);
+}
+
+.btn-outline-eyrc {
+    border: 1px solid var(--text-black);
+    color: var(--text-black);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-eyrc:hover {
+    background: #f4f4f4;
+}
+
+.hero-right-card {
+    background: #fbc02d; /* Amarelo institucional de destaque */
+    color: #111;
+    padding: 2.5rem;
+    border-radius: 0px;
+    position: relative;
+    box-shadow: 12px 12px 0px #111111; /* Sombra sólida arquitetônica */
+}
+
+.badge-accent {
+    background: #111;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.progress-bar-eyrc {
+    background: rgba(0,0,0,0.15);
+    height: 8px;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.progress-fill {
+    background: #111;
+    height: 100%;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* 2. BLOCO ESCURO COM ALTO CONTRASTE */
+.block-dark {
+    background-color: #111111;
+    color: #ffffff;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.eyrc-tag-light {
+    color: #fbc02d;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.stats-grid-eyrc {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.stat-card {
+    border-left: 2px solid #fbc02d;
+    padding-left: 1.5rem;
+}
+
+.stat-num {
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    display: block;
+}
+
+.stat-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: #fbc02d;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+    display: block;
+}
+
+.stat-card p {
+    color: #aaaaaa;
+    font-size: 0.9rem;
+}
+
+/* 3. GRID ASSIMÉTRICO E MOVIEMNTO NOS CARDS */
+.asymmetric-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.stacked-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.card-eyrc {
+    border: 1px solid #e2e2e2;
+    padding: 2rem;
+    background: #fff;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.card-eyrc:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: #111111;
+}
+
+.card-yellow {
+    background: #fefce8;
+    border-color: #fef08a;
+}
+
+.card-yellow:hover {
+    border-color: #fbc02d;
+}
+
+.card-tag-float {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.4rem 0.9rem;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--brand-accent);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .hero-eyrc, .asymmetric-grid, .stats-grid-eyrc {
+        grid-template-columns: 1fr;
+    }
+}
+/* === ESTILOS DO CARROSSEL === */
+.carrossel-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.carrossel-container {
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid var(--line-color, #111);
+    background-color: #000;
+}
+
+.carrossel-slides {
+    position: relative;
+    width: 100%;
+    height: 450px;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Legenda sobreposta à foto */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    color: #fff;
+    padding: 2rem 1.5rem 1.5rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.slide-caption h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: #fbc02d;
+}
+
+.slide-caption p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+/* Botões Anterior e Próximo */
+.carrossel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    color: #111;
+    border: 2px solid #111;
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.carrossel-btn:hover {
+    background: #fbc02d;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carrossel-btn.prev {
+    left: 15px;
+}
+
+.carrossel-btn.next {
+    right: 15px;
+}
+
+/* Indicadores (Dots) abaixo do carrossel */
+.carrossel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border: 1px solid #111;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.dot.active,
+.dot:hover {
+    background-color: #111;
+    transform: scale(1.2);
+}
+/* === BOTÃO FLUTUANTE DO WHATSAPP (TRANSPARENTE) === */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.whatsapp-float img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    /* Opcional: mantém uma leve sombra projetada apenas nos contornos do próprio ícone */
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.25));
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+}
+/* BANNER SUPERIOR & AVISOS */
+.top-banner {
+    background-color: var(--color-forest);
+    color: #ffffff;
+}
+
+.top-banner a {
+    color: var(--color-amber);
+}
+
+/* BOTÕES PRINCIPAIS */
+.btn-primary-eyrc {
+    background-color: var(--color-amber);
+    color: #111111;
+    border: 2px solid #111111;
+    font-weight: bold;
+}
+
+.btn-primary-eyrc:hover {
+    background-color: var(--color-leaf);
+    color: #ffffff;
+}
+
+.btn-outline-eyrc {
+    border: 2px solid var(--color-forest);
+    color: var(--color-forest);
+}
+
+.btn-outline-eyrc:hover {
+    background-color: var(--color-forest);
+    color: #ffffff;
+}
+
+.btn-doe {
+    background-color: var(--color-leaf);
+    color: #ffffff !important;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+
+.btn-doe:hover {
+    background-color: var(--color-forest);
+}
+
+/* TAGS E BADGES */
+.eyrc-tag {
+    background-color: #f0fdf4;
+    color: var(--color-forest);
+    border: 1px solid var(--color-leaf);
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.badge-accent {
+    background-color: var(--color-amber);
+    color: #111111;
+    font-weight: bold;
+}
+
+/* CARDS DE DESTAQUE */
+.card-yellow {
+    background-color: #fffbeb;
+    border: 2px solid var(--color-amber);
+}
+
+.card-featured {
+    border-top: 4px solid var(--color-forest);
+}
+
+/* CARROSSEL DE IMAGENS */
+.carrossel-btn:hover {
+    background-color: var(--color-amber);
+}
+
+.dot.active {
+    background-color: var(--color-forest);
+    border-color: var(--color-forest);
+}
+
+.slide-caption h4 {
+    color: var(--color-amber);
+}
+
+/* BLOCOS DE DESTAQUE E AÇÕES */
+.card-dark-action {
+    background-color: var(--color-forest) !important;
+}
+
+.card-dark-action .btn-primary-eyrc {
+    background-color: var(--color-amber) !important;
+    color: #111111 !important;
+}
+
+/* FAQ E DETALHES */
+details.faq-item[open] {
+    border-left: 4px solid var(--color-leaf);
+}
+/* === HOVER NO CARD DO EVENTO CORTELLA === */
+.hero-right-card {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.hero-right-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-forest);
+    box-shadow: 8px 8px 0px var(--color-amber);
+}
+
+/* Animação suave no texto/link dentro do card ao passar o mouse */
+.hero-right-card:hover .card-link {
+    color: var(--color-forest) !important;
+    text-decoration: underline;
+}
+
+.hero-right-card:hover .badge-accent {
+    background-color: var(--color-leaf);
+    color: #ffffff;
+}
+/* === EFEITO SHIMMER (BRILHO PASSANTE NO CARD) === */
+.hero-right-card {
+    position: relative;
+    overflow: hidden; /* Garante que o brilho não saia do card */
+}
+
+.hero-right-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(245, 179, 42, 0.35), /* Brilho Dourado */
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: shimmerEffect 4s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shimmerEffect {
+    0% { left: -150%; }
+    30% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* === BADGE PULSANTE ("RADAR") === */
+.badge-pulse-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--color-amber);
+    color: #111111;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border: 1px solid #111111;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-forest);
+    border-radius: 50%;
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid var(--color-forest);
+    border-radius: 50%;
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+/* === REVEAL AO ROLAR A TELA === */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* === RODAPÉ HARMONIZADO COM A PALETA === */
+footer {
+    background-color: var(--color-forest);
+    color: #f4f9f5; /* Off-white quente e legível em fundo escuro */
+    border-top: 4px solid var(--color-amber); /* Linha divisória dourada */
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+}
+
+/* Títulos: Dourado em destaque */
+footer h4, 
+footer h5,
+.footer-title {
+    color: var(--color-amber);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+}
+
+/* Textos e Parágrafos: Verde-sábia muito claro (suave para a leitura) */
+footer p {
+    color: #d1e2d8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Links: Branco puro para contraste máximo, mudando para Verde Folha no hover */
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+    display: inline-block;
+}
+
+footer a:hover {
+    color: var(--color-leaf); /* Destaque em Verde Folha ao passar o mouse */
+    transform: translateX(4px);
+}
+
+/* Lista de navegação */
+footer ul li {
+    margin-bottom: 0.6rem;
+    color: #d1e2d8;
+}
+
+/* Ícones de Redes Sociais */
+.footer-social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    border: 1px solid rgba(245, 179, 42, 0.4); /* Borda suave em tom dourado */
+    transition: all 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    background-color: var(--color-amber);
+    color: #111111; /* Texto escuro dentro do ícone dourado */
+    border-color: var(--color-amber);
+    transform: translateY(-3px);
+}
+
+/* Área de Copyright e Direitos Autorais */
+.footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+    font-size: 0.85rem;
+    color: #b8d2c3; /* Tom secundário harmonioso */
+}
+
+.footer-bottom strong {
+    color: var(--color-amber);
+}
+/* === RODAPÉ - TODAS AS LETRAS BRANCAS === */
+footer,
+footer p,
+footer span,
+footer li,
+footer a,
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6,
+footer .footer-title,
+footer .footer-bottom,
+footer div {
+    color: #ffffff !important;
+}
+
+/* Estilo do Rodapé */
+footer {
+    background-color: var(--color-forest);
+    border-top: 4px solid var(--color-amber);
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+}
+
+/* Destaque visual nos Títulos (Mantém letra branca + detalhe dourado abaixo) */
+footer h4, 
+footer h5,
+.footer-title {
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--color-amber);
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+/* Transição ao passar o mouse nos Links */
+footer a {
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+    display: inline-block;
+}
+
+footer a:hover {
+    color: var(--color-amber) !important; /* Ganha tom dourado no toque */
+    transform: translateX(4px);
+}
+
+/* Ícones de Redes Sociais */
+.footer-social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff !important;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    background-color: var(--color-amber);
+    color: #111111 !important; /* Fundo dourado com texto escuro para dar contraste no ícone */
+    border-color: var(--color-amber);
+    transform: translateY(-3px);
+}
+
+/* Área de Direitos Autorais */
+.footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    font-size: 0.85rem;
+}
+/* === REEQUILÍBRIO DE CORES (MAIS VERDE E AMARELO) === */
+:root {
+    --color-amber: #f5b32a;    /* Amarelo Destaque */
+    --color-forest: #2d7c59;   /* Verde Principal ONG */
+    --color-leaf: #5ec24a;     /* Verde Claro Vibrante */
+    
+    --bg-light: #f4f8f5;       /* Fundo suavemente pigmentado de verde */
+    --line-color: #cce3d5;     /* Divisores em tom verde suave */
+}
+
+/* BASE DO SITE */
+body {
+    background-color: var(--bg-light);
+    color: #1a3326;
+}
+
+/* BANNER SUPERIOR DE AVISO */
+.top-banner {
+    background-color: var(--color-leaf);
+    color: #0d281a;
+    font-weight: 600;
+}
+
+.top-banner a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* HEADER COM VERDE PREDOMINANTE */
+header {
+    background-color: var(--color-forest);
+    border-bottom: 4px solid var(--color-amber);
+}
+
+.logo-text h1, 
+.logo-text span {
+    color: #ffffff !important;
+}
+
+nav ul li a {
+    color: #ffffff !important;
+}
+
+nav ul li a:hover {
+    color: var(--color-amber) !important;
+}
+
+/* BOTÃO DE DOAÇÃO DO NAV */
+.btn-doe {
+    background-color: var(--color-amber) !important;
+    color: #111111 !important;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+}
+
+.btn-doe:hover {
+    background-color: var(--color-leaf) !important;
+    color: #ffffff !important;
+}
+
+/* BOTÕES PRINCIPAIS */
+.btn-primary-eyrc {
+    background-color: var(--color-forest);
+    color: #ffffff;
+    border: 2px solid var(--color-amber);
+}
+
+.btn-primary-eyrc:hover {
+    background-color: var(--color-amber);
+    color: #111111;
+}
+
+.btn-outline-eyrc {
+    border: 2px solid var(--color-forest);
+    color: var(--color-forest);
+    background-color: #ffffff;
+}
+
+.btn-outline-eyrc:hover {
+    background-color: var(--color-forest);
+    color: #ffffff;
+}
+
+/* TAGS E INDICADORES DE SEÇÃO */
+.eyrc-tag {
+    background-color: #e2f2e7;
+    color: var(--color-forest);
+    border: 1px solid var(--color-leaf);
+}
+
+/* SEÇÃO ESCURA / BLOCO DE IMPACTO (Substituindo o preto pelo Verde Floresta) */
+.block-dark {
+    background-color: var(--color-forest) !important;
+    border-top: 4px solid var(--color-amber);
+    border-bottom: 4px solid var(--color-amber);
+}
+
+.block-dark .stat-num {
+    color: var(--color-amber) !important;
+}
+
+.block-dark .stat-title,
+.block-dark p,
+.block-dark h3 {
+    color: #ffffff !important;
+}
+
+/* CARDS E BORDAS */
+.card-eyrc {
+    border: 2px solid var(--color-forest);
+    background-color: #ffffff;
+    box-shadow: 4px 4px 0px var(--color-leaf);
+}
+
+.card-yellow {
+    background-color: #fffdf0;
+    border: 2px solid var(--color-amber);
+    box-shadow: 4px 4px 0px var(--color-amber);
+}
+
+/* CARD DO EVENTO CORTELLA */
+.hero-right-card {
+    background-color: #ffffff;
+    border: 3px solid var(--color-forest);
+    box-shadow: 6px 6px 0px var(--color-amber);
+}
+
+.badge-accent {
+    background-color: var(--color-amber);
+    color: #111111;
+}
+
+/* CARROSSEL */
+.carrossel-container {
+    border: 3px solid var(--color-forest);
+}
+
+.carrossel-btn {
+    background: var(--color-amber);
+    color: #111111;
+    border: 2px solid var(--color-forest);
+}
+
+.carrossel-btn:hover {
+    background: var(--color-leaf);
+    color: #ffffff;
+}
+
+.dot.active {
+    background-color: var(--color-forest);
+    border-color: var(--color-amber);
+}
+
+/* FAQ */
+details.faq-item {
+    border: 1px solid var(--color-forest);
+    background-color: #ffffff;
+}
+
+details.faq-item[open] {
+    border-left: 5px solid var(--color-amber);
+}
+/* AJUSTE DOS TOCADORES DE ÁUDIO DA GALERIA */
+audio::-webkit-media-controls-panel {
+    background-color: var(--bg-light);
+}
+/* === HEADER VERDE ESTÁTICO (NÃO ACOMPANHA O SCROLL) === */
+header {
+    position: relative !important; /* Permanece no topo e sumir ao rolar a tela */
+    top: auto !important;
+    background-color: var(--color-forest) !important;
+    border-bottom: 4px solid var(--color-amber) !important;
+    padding: 1rem 0;
+}
+
+/* TEXTOS EM BRANCO PARA O FUNDO VERDE */
+.logo-text h1, 
+.logo-text span {
+    color: #ffffff !important;
+}
+
+nav ul li a {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--color-amber) !important;
+}
+
+/* BOTÃO DE DOAÇÃO NA NAVBAR */
+.btn-doe {
+    background-color: var(--color-amber) !important;
+    color: #111111 !important;
+    border: 2px solid #ffffff !important;
+    font-weight: 700;
+}
+
+.btn-doe:hover {
+    background-color: var(--color-leaf) !important;
+    color: #ffffff !important;
+}
+/* === REMOVER BANNER DE AVISO DO TOPO === */
+.top-banner {
+    display: none !important;
+}
+
+/* === PADRÃO PONTILHADO COM DESLOCAMENTO SUAVE === */
+body {
+    background-color: #f4f8f5;
+    background-image: radial-gradient(rgba(45, 124, 89, 0.15) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    animation: movePattern 40s linear infinite;
+}
+
+@keyframes movePattern {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 280px 280px;
+    }
+}
+/* AJUSTE DE POSICIONAMENTO PARA O VLIBRAS E WHATSAPP */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+/* Garante que a barra do VLibras fique acessível no canto direito acima do WhatsApp */
+[vw] {
+    z-index: 9998 !important;
+}
+/* === ESTILOS DO FORMULÁRIO DE VOLUNTARIADO === */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-full {
+    grid-column: 1 / -1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 700;
+    color: var(--color-forest);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--line-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #1a3326;
+    background-color: #fcfdfe;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-forest);
+    box-shadow: 0 0 0 3px rgba(45, 124, 89, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+/* === LOGO ARREDONDADA E HOVER COM AUMENTO DE TAMANHO (SCALE) NA NAVBAR === */
+
+/* 1. Arredondamento da Imagem da Logo */
+header .logo img,
+.logo img {
+    border-radius: 50%; /* Altere para 50% caso queira a logo totalmente circular */
+    transition: transform 0.3s ease;
+}
+
+/* 2. Garantia de que a animação de escala funcione suavemente em todos os itens */
+.logo,
+.logo-text,
+nav ul li a,
+.btn-doe,
+.btn-contrast {
+    display: inline-block; /* Necessário para que o transform: scale funcione nos links */
+    transition: transform 0.25s ease, color 0.25s ease, background-color 0.25s ease !important;
+}
+
+/* 3. Hover de Aumento de Tamanho na Logo e no Nome do Lar */
+.logo:hover,
+.logo-text:hover {
+    transform: scale(1.06); /* Aumenta 6% do tamanho original */
+    cursor: pointer;
+}
+
+/* 4. Hover de Aumento de Tamanho nos Links da Navbar */
+nav ul li a:hover {
+    transform: scale(1.12) !important; /* Aumenta 12% do tamanho original */
+}
+
+/* 5. Hover de Aumento de Tamanho nos Botões (Apoiar / Alto Contraste) */
+.btn-doe:hover,
+.btn-contrast:hover {
+    transform: scale(1.08) !important; /* Aumenta 8% do tamanho original */
+}
+/* CORREÇÃO DEFINITIVA DO BORDER-RADIUS NA LOGO */
+header img,
+.logo img,
+nav .logo img,
+.logo-text img {
+    border-radius: 12px !important; /* Define as pontas arredondadas */
+    overflow: hidden !important;    /* Recorta o conteúdo da imagem nas bordas */
+    display: block !important;      /* Garante o comportamento correto de caixa */
+}
+.logo img:hover{
+    transform: scale(1.08) !important;
+}
