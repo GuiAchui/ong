@@ -1567,3 +1567,1016 @@ nav .logo img,
 .logo img:hover{
     transform: scale(1.08) !important;
 }
+/* === BORDER-RADIUS SUTIL PARA TODOS OS CARDS === */
+.card-eyrc,
+.hero-right-card,
+.card-voluntario,
+.card,
+details.faq-item {
+    border-radius: 8px !important;
+    overflow: hidden; /* Garante que o conteúdo e fundos internos respeitem as bordas */
+}
+/* SPOTLIGHT + PULSO ORGANICO DE LUZ */
+@keyframes pulsoRespiro {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.15); opacity: 0.35; }
+}
+
+header,
+footer,
+.footer-eyrc,
+.block-dark,
+.bg-green {
+    position: relative;
+    overflow: hidden;
+    background-color: #1b4d37 !important;
+    background-image: 
+        radial-gradient(
+            450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(245, 179, 42, 0.4),
+            transparent 75%
+        ),
+        radial-gradient(circle at 50% 50%, #2d7c59, #1b4d37) !important;
+}
+/* REGRA DE TRANSIÇÃO DAS VARIÁVEIS PARA ANIMAÇÃO SUAVE */
+@property --mouse-x { syntax: '<length-percentage>'; inherits: false; initial-value: 50%; }
+@property --mouse-y { syntax: '<length-percentage>'; inherits: false; initial-value: 50%; }
+@property --orb-opacity { syntax: '<number>'; inherits: false; initial-value: 0.12; }
+
+header,
+footer,
+.footer-eyrc,
+.block-dark,
+.bg-green {
+    background-color: #2d7c59 !important;
+    background-image: 
+        radial-gradient(
+            450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(245, 179, 42, var(--orb-opacity, 0.12)),  /* Orbe Âmbar com opacidade dinâmica */
+            rgba(94, 194, 74, calc(var(--orb-opacity, 0.12) * 0.5)) 50%,
+            transparent 75%
+        ),
+        linear-gradient(125deg, #2d7c59, #1b4d37, #2d7c59, #256347) !important;
+    background-size: 100% 100%, 200% 200% !important;
+    transition: --mouse-x 0.6s ease, --mouse-y 0.6s ease, --orb-opacity 0.6s ease;
+}
+/* =========================================================
+   SPOTLIGHT DINÂMICO GLOBAL (SEM DEPENDÊNCIA DE IMAGENS)
+   ========================================================= */
+
+/* Transições suaves para os orbes */
+@property --mouse-x-light { syntax: '<length-percentage>'; inherits: false; initial-value: 50%; }
+@property --mouse-y-light { syntax: '<length-percentage>'; inherits: false; initial-value: 50%; }
+@property --orb-opacity-light { syntax: '<number>'; inherits: false; initial-value: 0.08; }
+
+/* TODAS AS SEÇÕES CLARAS DO SITE TODO */
+body, 
+main,
+section:not(.bg-green):not(.block-dark):not(header):not(footer),
+.hero-eyrc,
+.section-light,
+.card-section {
+    background-image: 
+        radial-gradient(
+            650px circle at var(--mouse-x-light, 50%) var(--mouse-y-light, 50%),
+            rgba(245, 179, 42, var(--orb-opacity-light, 0.08)), /* Orbe Âmbar sutil */
+            rgba(94, 194, 74, calc(var(--orb-opacity-light, 0.08) * 0.4)) 50%,
+            transparent 75%
+        ) !important;
+    transition: --mouse-x-light 0.6s ease, --mouse-y-light 0.6s ease, --orb-opacity-light 0.6s ease;
+}
+/* === ADEQUAÇÃO DE PROPORÇÃO E EXPANSÃO DO FAQ === */
+
+/* 1. Rebalanceia o grid (FAQ ocupa ~60% e Agenda ~40% da largura) */
+.faq-agenda-container,
+.faq-agenda-wrapper,
+.faq-section-grid {
+    display: grid !important;
+    grid-template-columns: 1.4fr 1fr !important;
+    gap: 2.5rem !important;
+    align-items: start;
+}
+
+/* 2. Amplia a presença visual dos cards do FAQ */
+details.faq-item,
+.faq-item {
+    padding: 1.25rem 1.6rem !important;
+    margin-bottom: 1.2rem !important;
+    border-radius: 8px !important;
+    background: #ffffff;
+    border: 1px solid rgba(45, 124, 89, 0.18) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+/* 3. Aumenta a tipografia e destaque dos títulos das perguntas */
+details.faq-item summary,
+.faq-item summary {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: #1b4d37 !important;
+    line-height: 1.4 !important;
+    cursor: pointer;
+}
+
+/* 4. Expande o corpo do texto e espaçamento da resposta */
+details.faq-item p,
+.faq-item .faq-answer {
+    font-size: 1rem !important;
+    line-height: 1.65 !important;
+    color: #444444;
+    margin-top: 0.85rem !important;
+    padding-top: 0.85rem;
+    border-top: 1px dashed rgba(45, 124, 89, 0.15);
+}
+
+/* 5. Ajuste responsivo para tablets e celulares */
+@media (max-width: 992px) {
+    .faq-agenda-container,
+    .faq-agenda-wrapper,
+    .faq-section-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+/* === EFEITO HOVER NAS PERGUNTAS DO FAQ === */
+details.faq-item,
+.faq-item {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+details.faq-item:hover,
+.faq-item:hover {
+    transform: translateY(-3px) !important;
+    border-color: #2d7c59 !important;
+    box-shadow: 0 8px 22px rgba(45, 124, 89, 0.12) !important;
+}
+
+details.faq-item summary,
+.faq-item summary {
+    transition: color 0.2s ease !important;
+}
+
+details.faq-item summary:hover,
+.faq-item summary:hover {
+    color: #2d7c59 !important;
+}
+/* === EFEITO HOVER NAS PERGUNTAS DO FAQ === */
+details.faq-item,
+.faq-item {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+details.faq-item:hover,
+.faq-item:hover {
+    transform: translateY(-3px) !important;
+    border-color: #2d7c59 !important;
+    box-shadow: 0 8px 22px rgba(45, 124, 89, 0.12) !important;
+}
+
+details.faq-item summary,
+.faq-item summary {
+    transition: color 0.2s ease !important;
+}
+
+details.faq-item summary:hover,
+.faq-item summary:hover {
+    color: #2d7c59 !important;
+}
+/* === CHATBOT FLUTUANTE === */
+.chat-widget-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+.chat-launcher-btn {
+    background: #2d7c59;
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 1.4rem;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.chat-launcher-btn:hover {
+    background: #1b4d37;
+    transform: translateY(-3px);
+}
+
+.chat-box {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 350px;
+    height: 480px;
+    background: #ffffff;
+    border: 2px solid rgba(45, 124, 89, 0.2);
+    border-radius: 8px !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chat-header {
+    background: #2d7c59;
+    color: #ffffff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header-info strong { display: block; font-size: 0.95rem; }
+.chat-header-info small { opacity: 0.85; font-size: 0.75rem; }
+
+.chat-close-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: #fdfbf7;
+}
+
+.msg {
+    max-width: 80%;
+    padding: 0.7rem 1rem;
+    border-radius: 8px !important;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.msg-bot {
+    background: #e8f4ed;
+    color: #1b4d37;
+    align-self: flex-start;
+    border-left: 3px solid #2d7c59;
+}
+
+.msg-user {
+    background: #f5b32a;
+    color: #1b4d37;
+    font-weight: 600;
+    align-self: flex-end;
+}
+
+.chat-footer {
+    padding: 0.75rem;
+    background: #ffffff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px !important;
+    outline: none;
+}
+
+.chat-send-btn {
+    background: #2d7c59;
+    color: #ffffff;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 8px !important;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* === BOTÃO FLUTUANTE REDONDO E RETRÁTIL === */
+.chat-widget-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+/* Botão Redondo Compacto */
+.chat-launcher-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50% !important;
+    background: #2d7c59;
+    color: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.27), background-color 0.25s ease, width 0.3s ease;
+    padding: 0;
+    overflow: hidden;
+}
+
+.chat-icon {
+    font-size: 1.6rem;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito ao passar o mouse (Elevação e Pulso) */
+.chat-launcher-btn:hover {
+    background: #1b4d37;
+    transform: scale(1.1);
+}
+
+/* Animação quando o chat estiver aberto (Gira e muda para 'X') */
+.chat-launcher-btn.active .chat-icon {
+    transform: rotate(180deg);
+}
+
+/* Posicionamento da Janela em relação ao Botão Redondo */
+.chat-box {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 350px;
+    height: 480px;
+    background: #ffffff;
+    border: 2px solid rgba(45, 124, 89, 0.2);
+    border-radius: 12px !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.chat-box.card-oculto {
+    display: none !important;
+}
+/* === ANIMAÇÃO DE SURGIMENTO SUAVE (SLIDE-UP) DO CHAT === */
+.chat-box {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 350px;
+    height: 480px;
+    background: #ffffff;
+    border: 2px solid rgba(45, 124, 89, 0.2);
+    border-radius: 12px !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    /* Estado Aberto (Visível) */
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+    pointer-events: all;
+
+    /* Transição fluida de elevação */
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.35s ease;
+}
+
+/* Estado Oculto (Deslocado 25px para baixo e transparente) */
+.chat-box.card-oculto {
+    display: flex !important; /* Mantém na árvore DOM para permitir a animação */
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* === CATÁLOGO PIX INTERATIVO === */
+.pix-catalogo-section {
+    padding: 4rem 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pix-container {
+    max-width: 1100px;
+    width: 100%;
+    text-align: center;
+}
+
+.pix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.pix-card {
+    background: #ffffff;
+    border: 2px solid rgba(45, 124, 89, 0.15);
+    border-radius: 8px !important;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pix-card:hover {
+    transform: translateY(-6px);
+    border-color: #2d7c59;
+    box-shadow: 0 12px 28px rgba(45, 124, 89, 0.15);
+}
+
+.pix-card.destacado {
+    border-color: #f5b32a;
+    background: linear-gradient(180deg, #ffffff 0%, #fffdf7 100%);
+}
+
+.pix-card-icon {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.pix-card-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #e8f4ed;
+    color: #2d7c59;
+    padding: 0.25rem 0.6rem;
+    border-radius: 8px !important;
+    margin-bottom: 0.8rem;
+}
+
+.badge-ouro {
+    background: rgba(245, 179, 42, 0.2);
+    color: #b87c00;
+}
+
+.pix-card h3 {
+    color: #1b4d37;
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.pix-card-desc {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.4;
+    flex-grow: 1;
+    margin-bottom: 1.2rem;
+}
+
+.pix-card-valor {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2d7c59;
+    margin-bottom: 1rem;
+}
+
+.btn-copiar-pix {
+    width: 100%;
+    background: #2d7c59;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-copiar-pix:hover {
+    background: #1b4d37;
+}
+
+.btn-copiar-pix:active {
+    transform: scale(0.97);
+}
+
+.btn-ouro {
+    background: #f5b32a;
+    color: #1b4d37;
+}
+
+.btn-ouro:hover {
+    background: #e09f19;
+}
+
+/* === NOTIFICAÇÃO TOAST === */
+.pix-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #1b4d37;
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px !important;
+    border-left: 5px solid #f5b32a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+}
+
+.pix-toast.ativo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon { font-size: 1.5rem; }
+.toast-text { text-align: left; }
+.toast-text strong { display: block; font-size: 0.95rem; color: #f5b32a; }
+.toast-text small { font-size: 0.8rem; opacity: 0.9; }
+/* Container do QR Code Visual */
+.pix-qrcode {
+    background: #ffffff;
+    padding: 0.6rem;
+    border: 1px solid rgba(45, 124, 89, 0.2);
+    border-radius: 8px !important;
+    margin: 0.8rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.pix-qrcode img {
+    width: 140px;
+    height: 140px;
+    display: block;
+    border-radius: 4px;
+}
+
+.hero-eyrc {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 80px 5% !important;
+    box-sizing: border-box !important;
+    /* Imagem ajustada para ambiente de creche/atividades infantis */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                      url('https://unsplash.com/pt-br/fotografias/as-criancas-sentam-se-e-assistem-a-algo-juntas-vLouBJJ3fHs') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Legibilidade do texto da esquerda */
+.hero-left h2 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-left p {
+    color: #f1f5f9 !important;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* --- CARROSSEL HORIZONTAL DE FOTOS (TAMANHO AMPLIADO) --- */
+.secao-carrossel-compacto {
+    width: 100% !important;
+    max-width: 1300px !important;
+    margin: 50px auto !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+}
+
+.carrossel-header h3 {
+    font-size: 1.6rem !important;
+    color: #1b4332 !important;
+    margin-top: 6px !important;
+}
+
+/* Mantém o trilho na horizontal com mais espaço */
+.carrossel-trilho {
+    display: flex !important;
+    gap: 20px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    padding-bottom: 16px !important;
+    scrollbar-width: thin;
+    scrollbar-color: #2d6a4f #f1f5f9;
+}
+
+.carrossel-trilho::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carrossel-trilho::-webkit-scrollbar-thumb {
+    background: #2d6a4f;
+    border-radius: 8px;
+}
+
+/* Dimensões ampliadas dos cards mantendo a horizontalidade */
+.card-foto-horizontal {
+    flex: 0 0 420px !important; /* Largura expandida para 420px */
+    height: 280px !important;   /* Altura expandida para 280px */
+    position: relative;
+    border-radius: 8px !important;
+    overflow: hidden;
+    scroll-snap-align: start;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border: 1px solid #e2e8f0;
+}
+
+.card-foto-horizontal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card-foto-horizontal:hover img {
+    transform: scale(1.06);
+}
+
+.card-foto-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+    color: #ffffff;
+}
+
+.badge-foto {
+    background: #d97706 !important;
+    color: #ffffff !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    padding: 4px 12px !important;
+    border-radius: 4px !important;
+    text-transform: uppercase;
+}
+
+.card-foto-overlay p {
+    margin: 8px 0 0 0 !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    line-height: 1.3;
+}
+
+
+/* ==========================================
+   RESET GLOBAL (ELIMINA BORDAS E ESPAÇOS SOBRANDO)
+   ========================================== */
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* ==========================================
+   SEÇÕES EM LARGURA TOTAL E ALTERNÂNCIA #2d7c59
+   ========================================== */
+
+section {
+    position: relative;
+    overflow: hidden;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 70px 5% !important;
+    box-sizing: border-box !important;
+}
+
+/* Blocos pares em verde institucional (#2d7c59) */
+section:nth-of-type(even) {
+    background-color: #2d7c59 !important;
+    color: #ffffff !important;
+}
+
+section:nth-of-type(even) h1,
+section:nth-of-type(even) h2,
+section:nth-of-type(even) h3 {
+    color: #ffffff !important;
+}
+
+section:nth-of-type(even) p {
+    color: #f0fdf4 !important;
+}
+
+/* Cards internos adaptados ao novo verde */
+section:nth-of-type(even) .card-recado,
+section:nth-of-type(even) .pix-card,
+section:nth-of-type(even) .card-foto-horizontal {
+    background-color: #215e43 !important;
+    border: 1px solid #3ca878 !important;
+    color: #ffffff !important;
+}
+
+section:nth-of-type(even) .nuvem-container {
+    background: #215e43 !important;
+    border-color: #3ca878 !important;
+}
+
+section:nth-of-type(even) .nuvem-container h3 {
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   EFEITO LUZ DO MOUSE (SPOTLIGHT ADAPTADO)
+   ========================================== */
+
+/* Luz suave nas seções claras */
+section:nth-of-type(odd)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(45, 124, 89, 0.12),
+        transparent 65%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Brilho aquecido nas seções verdes */
+section:nth-of-type(even)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 200, 87, 0.22),
+        rgba(255, 255, 255, 0.05) 40%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Garante que textos e componentes fiquem sobre o brilho */
+section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- CORREÇÃO DE PREENCHIMENTO TOTAL DO CARROSSEL --- */
+.secao-carrossel-compacto {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 60px 5% !important;
+    box-sizing: border-box !important;
+}
+
+/* Centraliza o cabeçalho e as fotos dentro do bloco expandido */
+.carrossel-header,
+.carrossel-trilho {
+    max-width: 1300px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* =========================================================
+   AJUSTE DE CORES DE TEXTO (SEÇÕES VERDES)
+   ========================================================= */
+
+/* 1. TÍTULOS E TAGS NO FUNDO VERDE: AMARELO */
+section:nth-of-type(even) h1,
+section:nth-of-type(even) h2,
+section:nth-of-type(even) h3,
+section:nth-of-type(even) h4,
+section:nth-of-type(even) .eyrc-tag,
+section:nth-of-type(even) .badge-accent,
+section:nth-of-type(even) [class*="tag"] {
+    color: #fbc02d !important; /* Amarelo reluzente */
+}
+
+/* 2. TEXTOS DIRETO NO FUNDO VERDE: BRANCO */
+section:nth-of-type(even) p,
+section:nth-of-type(even) span,
+section:nth-of-type(even) blockquote,
+section:nth-of-type(even) cite,
+section:nth-of-type(even) small {
+    color: #ffffff !important; /* Branco de alto contraste */
+}
+
+/* 3. TEXTOS DENTRO DOS CARDS EXISTENTES (BRANCOS): ESCURO */
+section:nth-of-type(even) [class*="card"] h1,
+section:nth-of-type(even) [class*="card"] h2,
+section:nth-of-type(even) [class*="card"] h3,
+section:nth-of-type(even) [class*="card"] h4,
+section:nth-of-type(even) [class*="card"] p,
+section:nth-of-type(even) [class*="card"] span,
+section:nth-of-type(even) [class*="card"] cite,
+section:nth-of-type(even) [class*="card"] small,
+section:nth-of-type(even) [class*="card"] blockquote {
+    color: #1e293b !important; /* Grafite escuro para leitura no fundo branco */
+}
+
+/* EXCEÇÃO: Preserva as legendas internas do carrossel de fotos */
+section:nth-of-type(even) .card-foto-horizontal p,
+section:nth-of-type(even) .card-foto-horizontal span {
+    color: #ffffff !important;
+}
+
+/* =========================================================
+   FUNDOS BRANCOS NOS CARDS INDIVIDUAIS DE APOIO E VOLUNTARIADO
+   ========================================================= */
+
+/* Aplica fundo branco a todos os cards de opções e contêineres de itens */
+section:nth-of-type(even) .pix-card > div,
+section:nth-of-type(even) .pix-card > div,
+section:nth-of-type(even) .pix-card,
+section:nth-of-type(even) .pix-card,
+section:nth-of-type(even) .pix-card,
+section:nth-of-type(even) .pix-card,
+section:nth-of-type(even) .card-dark-action {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 24px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Garante a cor escura de leitura para títulos e textos dentro desses cards */
+section:nth-of-type(even) .pix-card > div *,
+section:nth-of-type(even) .pix-card > div *,
+section:nth-of-type(even) .pix-card *,
+section:nth-of-type(even) .pix-card *,
+section:nth-of-type(even) .pix-card *,
+section:nth-of-type(even) .pix-card *,
+section:nth-of-type(even) .card-dark-action * {
+    color: #1e293b !important;
+}
+
+/* Preserva a cor do texto e o estilo dos botões principais nos cards */
+section:nth-of-type(even) .btn-primary-eyrc,
+section:nth-of-type(even) button:not(.btn-outline-eyrc) {
+    color: #ffffff !important;
+}
+
+/* =========================================================
+   ESTILIZAÇÃO ESPECÍFICA: STATS GRID
+   ========================================================= */
+
+/* Remove fundos de card para integrá-los diretamente ao bloco da seção */
+.stats-grid-eyrc .stat-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px !important;
+}
+
+/* 1. NÚMEROS GRANDE (.stat-num): AMARELO */
+.stats-grid-eyrc .stat-num {
+    color: #fbc02d !important;
+    font-size: 2.8rem !important;
+    font-weight: 800 !important;
+    display: block !important;
+    line-height: 1 !important;
+    margin-bottom: 6px !important;
+}
+
+/* 2. TÍTULO (.stat-title): AMARELO */
+.stats-grid-eyrc .stat-title {
+    color: #fbc02d !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+}
+
+/* 3. PARÁGRAFO (<p>): BRANCO */
+.stats-grid-eyrc .stat-card p {
+    color: #ffffff !important;
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    opacity: 0.95 !important;
+}
+
+/* =========================================================
+   DESFAZ A REGRA GENÉRICA DE CARDS E APLICA AS CORES CORRETAS
+   ========================================================= */
+
+/* 1. Remove o fundo e bordas brancas herdados do selector [class*="card"] */
+section .stats-grid-eyrc .stat-card,
+section:nth-of-type(even) .stats-grid-eyrc .stat-card,
+section:nth-of-type(odd) .stats-grid-eyrc .stat-card {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. NÚMEROS E TÍTULOS: AMARELO (#fbc02d) */
+section .stats-grid-eyrc .stat-card .stat-num,
+section .stats-grid-eyrc .stat-card .stat-title,
+section:nth-of-type(even) .stats-grid-eyrc .stat-card .stat-num,
+section:nth-of-type(even) .stats-grid-eyrc .stat-card .stat-title,
+section:nth-of-type(odd) .stats-grid-eyrc .stat-card .stat-num,
+section:nth-of-type(odd) .stats-grid-eyrc .stat-card .stat-title {
+    color: #fbc02d !important;
+}
+
+/* 3. PARÁGRAFO: BRANCO (#ffffff) */
+section .stats-grid-eyrc .stat-card p,
+section:nth-of-type(even) .stats-grid-eyrc .stat-card p,
+section:nth-of-type(odd) .stats-grid-eyrc .stat-card p {
+    color: #ffffff !important;
+}
+
+/* =========================================================
+   BORDAS SUPERIOR E INFERIOR AMARELAS (SEÇÕES VERDES)
+   ========================================================= */
+
+section:nth-of-type(even) {
+    border-top: 6px solid #fbc02d !important;
+    border-bottom: 6px solid #fbc02d !important;
+}
+
+/* =========================================================
+   TEXTURA GRANULADA GLOBAL (EFFECTO NOISE / ELEGÂNCIA)
+   ========================================================= */
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.18'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: overlay;
+    opacity: 0.45;
+}
+
+/* =========================================================
+   BORDA DE DESTAQUE NOS CARDS DE DOAÇÃO (PIX & AÇÃO)
+   ========================================================= */
+
+.pix-card,
+.card-dark-action {
+    border: 2px solid #fbc02d !important; /* Borda amarela em destaque */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* Efeito sutil ao passar o mouse para dar interatividade */
+.pix-card:hover,
+.card-dark-action:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+
+/* =========================================================
+   SOMBRA VERDE NOS CARDS DA SEÇÃO DE DOAÇÕES E APOIO
+   ========================================================= */
+
+/* Aplica a sombra verde padronizada com a seção de depoimentos */
+.pix-card,
+.card-dark-action,
+.card-doacao,
+.card-opcao,
+.card-necessidade,
+.card-voluntario,
+[class*="pix"] {
+    box-shadow: 0 8px 24px rgba(45, 124, 89, 0.22) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+/* Intensifica a sombra verde e eleva o card no efeito hover */
+.pix-card:hover,
+.card-dark-action:hover,
+.card-doacao:hover,
+.card-opcao:hover,
+.card-necessidade:hover,
+.card-voluntario:hover,
+[class*="pix"]:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(45, 124, 89, 0.35) !important;
+}
