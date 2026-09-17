@@ -2580,3 +2580,38 @@ body::after {
     transform: translateY(-4px) !important;
     box-shadow: 0 12px 30px rgba(45, 124, 89, 0.35) !important;
 }
+
+/* =========================================================
+   CORREÇÃO DE CONTRASTE NO FAQ (TEXTO ESCURO EM MODO CLARO)
+   ========================================================= */
+
+/* Aplica cor escura aos textos e respostas do FAQ quando aberto */
+body:not(.dark-mode) .faq-item p,
+body:not(.dark-mode) .faq-answer,
+body:not(.dark-mode) .faq-content,
+body:not(.dark-mode) .faq-card p,
+body:not(.dark-mode) .faq-accordion p,
+body:not(.dark-mode) details p,
+body:not(.dark-mode) [class*="faq"] p,
+body:not(.dark-mode) [class*="faq"] span,
+body:not(.dark-mode) [class*="faq"] div {
+    color: #1e293b !important;
+}
+
+/* =========================================================
+   CORREÇÃO DE CONTRASTE NA CHAVE PIX (TEXTO ESCURO EM MODO CLARO)
+   ========================================================= */
+
+/* Aplica cor escura ao texto da chave PIX, campos de código e inputs */
+body:not(.dark-mode) .pix-key,
+body:not(.dark-mode) .chave-pix,
+body:not(.dark-mode) .pix-code,
+body:not(.dark-mode) [class*="pix"] code,
+body:not(.dark-mode) [class*="pix"] input,
+body:not(.dark-mode) [class*="pix"] textarea,
+body:not(.dark-mode) [class*="pix"] p,
+body:not(.dark-mode) [class*="pix"] span,
+body:not(.dark-mode) [class*="copiar"],
+body:not(.dark-mode) [class*="copy"] {
+    color: #1e293b !important;
+}
